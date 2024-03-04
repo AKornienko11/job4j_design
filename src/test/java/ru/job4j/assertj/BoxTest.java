@@ -30,7 +30,7 @@ class BoxTest {
         Box box = new Box(4, 6);
         int count = box.getNumberOfVertices();
         assertThat(count).isEqualTo(4)
-                .isGreaterThan(3);
+                .isGreaterThan(2);
 
     }
 
@@ -45,7 +45,7 @@ class BoxTest {
 
     @Test
     void getNumberOfVerticesUnknown() {
-        Box box = new Box(0, 3);
+        Box box = new Box(-1, 3);
         int count = box.getNumberOfVertices();
         assertThat(count).isEqualTo(-1)
                 .isNotZero()
