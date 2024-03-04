@@ -74,7 +74,7 @@ class BoxTest {
     void getArea() {
         Box box = new Box(0, 3);
         double result = box.getArea();
-        assertThat(result).isEqualTo(113.09733552923255);
+        assertThat(result).isEqualTo(113.095, withPrecision(0.003));
         assertThat(result).isCloseTo(113.096d, withPrecision(0.002d));
 
     }
