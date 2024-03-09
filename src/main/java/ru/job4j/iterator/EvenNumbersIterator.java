@@ -36,4 +36,5 @@ public class EvenNumbersIterator implements Iterator<Integer> {
             System.out.println(evenNumbersIterator.next());
         }
     }
+
 }
