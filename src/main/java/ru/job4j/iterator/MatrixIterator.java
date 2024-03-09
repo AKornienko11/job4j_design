@@ -37,4 +37,5 @@ public class MatrixIterator implements Iterator<Integer> {
             System.out.println(matrixIterator.next());
         }
     }
+
 }
