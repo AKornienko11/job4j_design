@@ -14,14 +14,9 @@ public class NonNullIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        for (int i = index; i < data.length; i++) {
-            if (data[i] != null) {
-                break;
-            } else {
-                index++;
-            }
+        while (index < data.length && data[index] == null) {
+            index++;
         }
-
         return index < data.length;
     }
 
@@ -34,7 +29,7 @@ public class NonNullIterator implements Iterator<Integer> {
     }
 
     public static void main(String[] args) {
-        Integer[] array = {1, 3, null, null, null, 4, 5, null, null};
+        Integer[] array = {1, 3, null, null, null, 4, 5, null, null, 7};
         NonNullIterator nonNullIterator = new NonNullIterator(array);
         while (nonNullIterator.hasNext()) {
             System.out.println(nonNullIterator.next());
