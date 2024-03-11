@@ -8,11 +8,9 @@ public class CyclicIterator<T> implements Iterator<T> {
 
     private List<T> data;
     int index;
-    /* здесь разместите поля класса, если они будут нужны  */
 
     public CyclicIterator(List<T> data) {
         this.data = data;
-        /* код конструктора */
     }
 
     @Override
