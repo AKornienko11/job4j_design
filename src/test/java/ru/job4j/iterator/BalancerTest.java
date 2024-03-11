@@ -133,4 +133,5 @@ class BalancerTest {
                 new ArrayList<>(List.of(3, 6))
         );
     }
+
 }
