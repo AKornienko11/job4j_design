@@ -15,11 +15,10 @@ public class CyclicIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        while (index == (data.size())) {
+        while (index == (data.size()) && data.size() != 0) {
             index = 0;
-
         }
-        return index < data.size();
+        return (!data.isEmpty());
     }
 
     @Override
@@ -31,10 +30,9 @@ public class CyclicIterator<T> implements Iterator<T> {
     }
 
     public static void main(String[] args) {
-        List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7);
+        List<Integer> list = List.of();
         CyclicIterator cyclicIterator = new CyclicIterator(list);
-        while (cyclicIterator.hasNext()) {
-            System.out.println(cyclicIterator.next());
-        }
+        boolean res = cyclicIterator.hasNext();
+        System.out.println(res);
     }
 }
