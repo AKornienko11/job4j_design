@@ -1,10 +1,10 @@
 package ru.job4j.generics;
 
-import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-class UserStoreTest {
+import static org.assertj.core.api.Assertions.*;
 
+class UserStoreTest {
     @Test
     void whenAddAndFindThenUsernameIsPetr() {
         UserStore store = new UserStore();
@@ -82,3 +82,4 @@ class UserStoreTest {
         assertThat(result).isFalse();
     }
 }
+
