@@ -27,6 +27,7 @@ public final class MemStore<T extends Base> implements Store<T> {
 
 
 
+
     @Override
     public void delete(String id) {
             storage.remove(id);

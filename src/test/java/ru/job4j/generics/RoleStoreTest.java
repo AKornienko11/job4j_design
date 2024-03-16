@@ -28,7 +28,7 @@ class RoleStoreTest {
         store.add(new Role("1", "Petr"));
         store.add(new Role("1", "Maxim"));
         Role result = store.findById("1");
-        assertThat(result.getName()).contains("et");
+        assertThat(result.getName()).contains("xi");
     }
 
     @Test

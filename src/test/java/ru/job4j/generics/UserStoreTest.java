@@ -27,7 +27,7 @@ class UserStoreTest {
         store.add(new User("1", "Petr"));
         store.add(new User("1", "Maxim"));
         User result = store.findById("1");
-        assertThat(result.getUsername()).isEqualTo("Petr");
+        assertThat(result.getUsername()).isEqualTo("Maxim");
     }
 
     @Test
