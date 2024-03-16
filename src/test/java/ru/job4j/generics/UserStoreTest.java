@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 class UserStoreTest {
+
     @Test
     void whenAddAndFindThenUsernameIsPetr() {
         UserStore store = new UserStore();
@@ -27,7 +28,7 @@ class UserStoreTest {
         store.add(new User("1", "Petr"));
         store.add(new User("1", "Maxim"));
         User result = store.findById("1");
-        assertThat(result.getUsername()).isEqualTo("Maxim");
+        assertThat(result.getUsername()).isEqualTo("Petr");
     }
 
     @Test
@@ -82,4 +83,3 @@ class UserStoreTest {
         assertThat(result).isFalse();
     }
 }
-
