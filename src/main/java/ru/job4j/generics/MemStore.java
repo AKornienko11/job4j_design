@@ -16,10 +16,7 @@ public final class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public boolean replace(String id, T model) {
-        if (storage.containsKey(id)) {
-            return storage.replace(id, storage.get(id), model);
-        }
-        return false;
+        return storage.replace(id, storage.get(id), model);
     }
 
     @Override
