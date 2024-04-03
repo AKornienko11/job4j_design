@@ -109,6 +109,5 @@ public class SimpleArrayList<T> implements SimpleList<T> {
             }
         };
     }
-
 }
 
