@@ -12,12 +12,16 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         container = (T[]) new Object[capacity];
     }
 
+    private void expand() {
+        container = Arrays.copyOf(container, container.length * 2);
+    }
+
 
     @Override
     public void add(T value) {
 
         if (container.length <= size) {
-            container = Arrays.copyOf(container, container.length * 2);
+            expand();
         }
         if (container.length == 0) {
             container = (T[]) new Object[1];
@@ -29,16 +33,10 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T set(int index, T newValue) {
-        if (Objects.checkIndex(index, container.length) > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (container.length == size) {
-            container = Arrays.copyOf(container, container.length * 2);
-
+        if (Objects.checkIndex(index, size) == index) {
+            expand();
             System.arraycopy(container, index, container, index + 1, size - index);
-
             container[index] = newValue;
-
         }
         return container[index + 1];
 
@@ -46,9 +44,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T remove(int index) {
-        if (Objects.checkIndex(index, container.length) > size) {
-            throw new IndexOutOfBoundsException();
-        }
+        Objects.checkIndex(index, size);
         if (container[index] == null) {
             throw new IndexOutOfBoundsException();
         }
@@ -63,14 +59,10 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T get(int index) {
-        T result = null;
-        if (Objects.checkIndex(index, container.length) < size) {
-            result = container[index];
-        } else {
+        if (!(Objects.checkIndex(index, container.length) < size)) {
             throw new IndexOutOfBoundsException();
         }
-
-        return result;
+        return container[index];
     }
 
 
