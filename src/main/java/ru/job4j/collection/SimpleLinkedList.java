@@ -57,10 +57,8 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
             public E next() {
                 if (hasNext()) {
                     h = h.next;
-                    E item = h.item;
-                    return item;
                 }
-                return null;
+                return h.item;
             }
         };
     }
