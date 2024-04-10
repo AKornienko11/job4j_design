@@ -55,9 +55,11 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
 
             @Override
             public E next() {
-                if (hasNext()) {
-                    h = h.next;
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
                 }
+                    h = h.next;
+
                 return h.item;
             }
         };
