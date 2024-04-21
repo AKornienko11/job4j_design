@@ -11,4 +11,5 @@ public class SimpleStack<T> {
         linked.addFirst(value);
 
     }
+
 }
