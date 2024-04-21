@@ -1,6 +1,9 @@
 package ru.job4j.collection;
 
-import java.util.*;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class ForwardLinked<T> implements Iterable<T> {
     private int size;
@@ -8,19 +11,20 @@ public class ForwardLinked<T> implements Iterable<T> {
     private Node<T> head;
 
     public ForwardLinked() {
-        head = new Node<>(null, null);
+        head = null;
     }
 
     public void add(T value) {
-        Node<T> node = head;
+
+        Node<T> h = head;
         Node<T> newNode = new Node<>(value, null);
-        if (node == null) {
+        if (head == null) {
             head = newNode;
         } else {
-            while (node.next != null) {
-                node = node.next;
+            while (h.next != null) {
+                h = h.next;
             }
-            node.next = newNode;
+            h.next = newNode;
         }
         size++;
         modCount++;
@@ -30,49 +34,39 @@ public class ForwardLinked<T> implements Iterable<T> {
         head = new Node<>(value, head);
         size++;
         modCount++;
-
-
     }
 
     public T get(int index) {
         Objects.checkIndex(index, size);
         Node<T> node = head;
-        for (int i = 0; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             node = node.next;
         }
         return node.item;
     }
 
     public T deleteFirst() {
-        if (head.next == null && head.item == null) {
+        if (head == null) {
             throw new NoSuchElementException();
         }
+        Node<T> node = head;
+        head = node.next;
 
-        Node<T> node = head.next;
-        T res = node.item;
-        node.item = null;
-        head.next = node.next;
-        node.next = null;
-        size--;
-        modCount++;
-        return res;
+        return node.item;
     }
 
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-
             int expectedModCount = modCount;
-
             Node<T> h = head;
 
             @Override
             public boolean hasNext() {
-                if (expectedModCount != modCount) {
+                if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
                 }
-
-                return h.next != null;
+                return h != null;
             }
 
             @Override
@@ -80,9 +74,10 @@ public class ForwardLinked<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
+                T res = h.item;
                 h = h.next;
 
-                return h.item;
+                return res;
             }
         };
     }
@@ -91,8 +86,8 @@ public class ForwardLinked<T> implements Iterable<T> {
         private T item;
         private Node<T> next;
 
-        public Node(T item, Node<T> next) {
-            this.item = item;
+        Node(T element, Node<T> next) {
+            this.item = element;
             this.next = next;
         }
     }
