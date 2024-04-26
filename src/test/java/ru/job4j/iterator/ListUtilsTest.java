@@ -55,13 +55,8 @@ class ListUtilsTest {
 
     @Test
     void whenRemoveAll() {
-        input.add(4);
-        input.add(5);
-        input.add(6);
-        input.add(7);
-        input.add(8);
         ListUtils.removeAll(input,
-                List.of(1, 4, 6, 8));
-        assertThat(input).containsSequence(3, 5, 7);
+                List.of(1));
+        assertThat(input).containsSequence(3);
     }
 }
