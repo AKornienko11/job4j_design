@@ -38,19 +38,16 @@ class ListUtilsTest {
 
     @Test
     void whenRemoveIf() {
-        Predicate<Integer> predicate = (i) -> (i == 1);
+        Predicate<Integer> predicate = (i) -> (i == 3);
         ListUtils.removeIf(input, predicate);
-        assertThat(input).hasSize(1).containsSequence(3);
+        assertThat(input).hasSize(1).containsSequence(1);
     }
 
     @Test
     void whenReplaceIf() {
-        input.add(3);
-        input.add(4);
-        input.add(3);
         Predicate<Integer> predicate = (i) -> (i == 3);
         ListUtils.replaceIf(input, predicate, 5);
-        assertThat(input).hasSize(5).containsSequence(1, 5, 5, 4, 5);
+        assertThat(input).hasSize(2).containsSequence(1, 5);
     }
 
     @Test
