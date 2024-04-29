@@ -22,15 +22,11 @@ public class SimpleArraySet<T> implements SimpleSet<T> {
     @Override
     public boolean contains(T value) {
         boolean result = false;
-        if (set.size() == 0) {
-            result = false;
-        } else {
             for (T el : set) {
                 if (Objects.equals(el, value)) {
                     result = true;
                     break;
                 }
-            }
         }
         return result;
     }
