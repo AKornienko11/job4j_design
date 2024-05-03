@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class User {
     private String name;
-    int children;
+    private int children;
    private Calendar birthday;
 
     public User(String name, int children, Calendar birthday) {
