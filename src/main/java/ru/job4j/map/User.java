@@ -13,42 +13,24 @@ public class User {
         this.birthday = birthday;
     }
 
-
-    /* @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        User user = (User) o;
-        return children == user.children && Objects.equals(name, user.name) && Objects.equals(birthday, user.birthday);
-    }*/
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, children, birthday);
-    }
-
     public static void main(String[] args) {
         HashMap<User, Object> map = new HashMap<>(10);
         Calendar birthday = new GregorianCalendar(1990, 6, 11);
         User user1 = new User("Alex", 1, birthday);
 
         int hashCode1 = user1.hashCode();
-        System.out.println(hashCode1);
+        System.out.println("hashCode user1 " + hashCode1);
         int hash1 = hashCode1 ^ (hashCode1 >>> 16);
-        System.out.println(hash1);
+        System.out.println("hash user1 " + hash1);
         int buket1 = hash1 & 10;
-        System.out.println(buket1);
+        System.out.println("Buket user1 " + buket1);
         User user2 = new User("Alex", 1, birthday);
         int hashCode2 = user2.hashCode();
-        System.out.println(hashCode2);
+        System.out.println("hashCode user2 " + hashCode2);
         int hash2 = hashCode2 ^ (hashCode1 >>> 16);
-        System.out.println(hash2);
+        System.out.println("hash user2 " + hash2);
         int buket2 = hash2 & 10;
-        System.out.println(buket2);
+        System.out.println("Buket user2  " + buket2);
         map.put(user1, new Object());
         map.put(user2, new Object());
 
