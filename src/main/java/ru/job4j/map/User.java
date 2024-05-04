@@ -27,7 +27,7 @@ public class User {
         User user2 = new User("Alex", 1, birthday);
         int hashCode2 = user2.hashCode();
         System.out.println("hashCode user2 " + hashCode2);
-        int hash2 = hashCode2 ^ (hashCode1 >>> 16);
+        int hash2 = hashCode2 ^ (hashCode2 >>> 16);
         System.out.println("hash user2 " + hash2);
         int buket2 = hash2 & 10;
         System.out.println("Buket user2  " + buket2);
@@ -47,5 +47,15 @@ public class User {
                 + ", children=" + children
                 + ", birthday=" + birthday
                 + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return (this == o);
+        }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
     }
 }
