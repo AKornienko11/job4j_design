@@ -1,11 +1,11 @@
 package ru.job4j.map;
 
-import java.util.Calendar;
+import java.util.*;
 
 public class User {
     private String name;
     private int children;
-   private Calendar birthday;
+    private Calendar birthday;
 
     public User(String name, int children, Calendar birthday) {
         this.name = name;
@@ -13,4 +13,57 @@ public class User {
         this.birthday = birthday;
     }
 
+
+    /* @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return children == user.children && Objects.equals(name, user.name) && Objects.equals(birthday, user.birthday);
+    }*/
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
+    }
+
+    public static void main(String[] args) {
+        HashMap<User, Object> map = new HashMap<>(10);
+        Calendar birthday = new GregorianCalendar(1990, 6, 11);
+        User user1 = new User("Alex", 1, birthday);
+
+        int hashCode1 = user1.hashCode();
+        System.out.println(hashCode1);
+        int hash1 = hashCode1 ^ (hashCode1 >>> 16);
+        System.out.println(hash1);
+        int buket1 = hash1 & 10;
+        System.out.println(buket1);
+        User user2 = new User("Alex", 1, birthday);
+        int hashCode2 = user2.hashCode();
+        System.out.println(hashCode2);
+        int hash2 = hashCode2 ^ (hashCode1 >>> 16);
+        System.out.println(hash2);
+        int buket2 = hash2 & 10;
+        System.out.println(buket2);
+        map.put(user1, new Object());
+        map.put(user2, new Object());
+
+        for (User res : map.keySet()) {
+            System.out.println(res);
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "name='" + name
+                + '\''
+                + ", children=" + children
+                + ", birthday=" + birthday
+                + '}';
+    }
 }
