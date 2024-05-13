@@ -25,6 +25,5 @@ public class Demonstrate {
         total = total * 31 + Objects.hashCode(id);
         total = total * 31 + Objects.hashCode(name);
         return total;
-
     }
 }
