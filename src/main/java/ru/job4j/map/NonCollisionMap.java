@@ -19,8 +19,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         if (capacity * LOAD_FACTOR <= count) {
             extend();
         }
-        int h = hash(Objects.hashCode(k));
-        int indexBuket = indexFor(h);
+        int indexBuket = findIndex(Objects.hashCode(k));
         if (table[indexBuket] != null) {
             res = false;
         } else {
@@ -33,13 +32,16 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int hash(int hashCode) {
-        int h = hashCode;
-        return (h == 0) ? 0 : (h ^ (h >>> 16));
+        return (hashCode == 0) ? 0 : (hashCode ^ (hashCode >>> 16));
     }
 
     private int indexFor(int hash) {
-        int n = capacity;
-        return (n - 1) & hash;
+        return (capacity - 1) & hash;
+    }
+
+    private int findIndex(int hasCode) {
+        int hashFunc = hash(hasCode);
+        return indexFor(hashFunc);
     }
 
     private void extend() {
@@ -47,24 +49,24 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
         for (MapEntry<K, V> res : table) {
             if (res != null) {
-                int h = hash(Objects.hashCode(res.key));
-                int indexBuket = indexFor(h);
-                newTable[indexBuket] = res;
+                newTable[findIndex(Objects.hashCode(res.key))] = res;
             }
         }
         table = newTable;
 
+    }
 
+    private boolean check(int index, K k) {
+        return table[index] != null
+                && Objects.hashCode(table[index].key) == Objects.hashCode(k)
+                && Objects.equals(table[index].key, k);
     }
 
     @Override
     public V get(K k) {
         V result = null;
-        int h = hash(Objects.hashCode(k));
-        int indexBuket = indexFor(h);
-        if (table[indexBuket] != null
-                && Objects.hashCode(table[indexBuket].key) == Objects.hashCode(k)
-                && Objects.equals(table[indexBuket].key, k)) {
+        int indexBuket = findIndex(Objects.hashCode(k));
+        if (check(indexBuket, k)) {
             result = table[indexBuket].value;
         }
         return result;
@@ -73,10 +75,8 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean remove(K k) {
         boolean result = false;
-        int h = hash(Objects.hashCode(k));
-        int indexBuket = indexFor(h);
-        if (table[indexBuket] != null && Objects.hashCode(table[indexBuket].key) == Objects.hashCode(k)
-                && Objects.equals(table[indexBuket].key, k)) {
+        int indexBuket = findIndex(Objects.hashCode(k));
+        if (check(indexBuket, k)) {
             table[indexBuket] = null;
             result = true;
             count--;
