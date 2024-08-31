@@ -38,4 +38,5 @@ public class LogFilter {
         LogFilter logFilter = new LogFilter("data/log.txt");
         logFilter.filter().forEach(System.out::println);
     }
+
 }
