@@ -15,10 +15,10 @@ public class LogFilter {
         List<String> result = new ArrayList<>();
         LogFilter logFilter = new LogFilter(file);
         BufferedReader input = new BufferedReader(new FileReader(logFilter.file));
-        List<String> list = input.lines().filter(e -> e.contains("404")).toList();
+        List<String> list = input.lines().toList();
         for (String res : list) {
             String[] str = res.split(" ");
-            if (str[str.length - 2].equals("404")) {
+            if ("404".equals(str[str.length - 2])) {
                 result.add(res);
             }
         }
