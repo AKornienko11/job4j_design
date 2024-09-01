@@ -16,11 +16,11 @@ class AnalysisTest {
         Analysis analysis = new Analysis();
         File source = tempDir.resolve("source.txt").toFile();
         try (PrintWriter output = new PrintWriter(source)) {
-            output.println("200 10:56:01"
-                    + "500 10:57:01"
-                    + "400 10:58:01"
-                    + "500 10:59:01"
-                    + "400 11:01:02"
+            output.println("200 10:56:01\n"
+                    + "500 10:57:01\n"
+                    + "400 10:58:01\n"
+                    + "500 10:59:01\n"
+                    + "400 11:01:02\n"
                     + "300 11:02:02");
 
         }
@@ -40,11 +40,11 @@ class AnalysisTest {
         Analysis analysis = new Analysis();
         File source = tempDir.resolve("source.txt").toFile();
         try (PrintWriter output = new PrintWriter(source)) {
-            output.println("200 10:56:01"
-                    + "500 10:57:01"
-                    + "400 10:58:01"
-                    + "300 10:59:01"
-                    + "500 11:01:02"
+            output.println("200 10:56:01\n"
+                    + "500 10:57:01\n"
+                    + "400 10:58:01\n"
+                    + "300 10:59:01\n"
+                    + "500 11:01:02\n"
                     + "200 11:02:02");
 
         }
