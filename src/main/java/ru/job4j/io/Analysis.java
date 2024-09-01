@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.StringJoiner;
+
 public class Analysis {
     public void unavailable(String source, String target) {
         StringJoiner stringJoiner = new StringJoiner(System.lineSeparator());
