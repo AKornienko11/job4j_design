@@ -48,7 +48,6 @@ public class SearchFiles implements FileVisitor<Path> {
 
     public List<Path> getPaths() {
         return paths;
-
     }
 
 }
