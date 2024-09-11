@@ -22,7 +22,6 @@ public class SearchFiles implements FileVisitor<Path> {
     }
 
 
-
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
         return CONTINUE;
@@ -31,7 +30,6 @@ public class SearchFiles implements FileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file,
                                      BasicFileAttributes attributes) throws IOException {
-
         if (predicate.test(file)) {
             this.paths.add(file);
         }
