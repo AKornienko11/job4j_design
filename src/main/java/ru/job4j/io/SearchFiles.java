@@ -13,8 +13,8 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class SearchFiles implements FileVisitor<Path> {
 
-    List<Path> paths;
-    Predicate<Path> predicate;
+    private List<Path> paths;
+    private Predicate<Path> predicate;
 
     public SearchFiles(Predicate<Path> predicate) {
         this.predicate = predicate;
