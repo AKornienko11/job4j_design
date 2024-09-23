@@ -20,11 +20,14 @@ public class Search {
     }
 
     public static void validate(String[] args) {
-        if (args.length == 0) {
+        if (args.length != 2) {
             throw new IllegalArgumentException("Root folder is null. Usage  ROOT_FOLDER.");
         }
+        if (args[1].equals("C:\\projects\\job4j_design\\src\\main\\java\\ru\\job4j\\io\\files")) {
+            throw new IllegalArgumentException("argument number 1 was passed incorrectly");
+        }
         if (!args[1].equals(".txt")) {
-            throw new IllegalArgumentException("There is no such type in the arguments");
+            throw new IllegalArgumentException("argument number 2 was passed incorrectly");
         }
     }
 }
