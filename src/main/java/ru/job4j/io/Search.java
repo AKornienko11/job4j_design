@@ -23,10 +23,13 @@ public class Search {
         if (args.length != 2) {
             throw new IllegalArgumentException("Root folder is null. Usage  ROOT_FOLDER.");
         }
-        if (args[1].equals("C:\\projects\\job4j_design\\src\\main\\java\\ru\\job4j\\io\\files")) {
-            throw new IllegalArgumentException("argument number 1 was passed incorrectly");
+        if (!Path.of(args[0]).toFile().exists() || !Path.of(args[0]).toFile().isDirectory()) {
+            throw new IllegalArgumentException("The passed path does not exist in the file system");
         }
-        if (!args[1].equals(".txt")) {
+        if (!args[1].startsWith(".")) {
+            throw new IllegalArgumentException("argument number 2  is not a file extension");
+        }
+        if (args[1].length() < 2) {
             throw new IllegalArgumentException("argument number 2 was passed incorrectly");
         }
     }
