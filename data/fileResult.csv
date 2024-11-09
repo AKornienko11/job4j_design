@@ -1,8 +1,8 @@
-name age last_name 
-Tom 20 Smith 
-Jack 25 Johnson 
-William 30 Brown 
-name age last_name 
-Tom 20 Smith 
-Jack 25 Johnson 
-William 30 Brown 
+name,age,last_name,
+Tom,20,Smith,
+Jack,25,Johnson,
+William,30,Brown,
+name,age,last_name,
+Tom,20,Smith,
+Jack,25,Johnson,
+William,30,Brown,

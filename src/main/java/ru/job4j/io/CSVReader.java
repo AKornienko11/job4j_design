@@ -1,10 +1,8 @@
 package ru.job4j.io;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class CSVReader {
     public static void handle(ArgsName argsName) throws Exception {
         List<Integer> findIndex = new ArrayList<>();
@@ -47,7 +45,3 @@ public class CSVReader {
         handle(argsName);
     }
 }
-
-
-
-
