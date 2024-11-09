@@ -87,4 +87,5 @@ class ArgsNameTest {
                 .hasMessageMatching("^.+")
                 .hasMessageContaining("Error: This argument 'request=?msg=Exit=' does not start with a '-' character");
     }
+
 }
