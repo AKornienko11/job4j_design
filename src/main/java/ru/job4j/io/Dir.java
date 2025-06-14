@@ -16,7 +16,6 @@ public class Dir {
         System.out.println(String.format("Размер файла : %s", file.length()));
         System.out.println(String.format("Имя  файла %s", file.getName()));
 
-
     }
 }
 
