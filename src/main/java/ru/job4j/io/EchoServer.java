@@ -19,6 +19,7 @@ public class EchoServer {
                     }
                     System.out.println(string);
                     output.flush();
+
                 }
             }
         }
