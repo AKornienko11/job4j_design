@@ -12,19 +12,17 @@ public class EchoServers {
                 Socket socket = server.accept();
                 try (OutputStream output = socket.getOutputStream();
                      BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-                    for (String string = input.readLine(); string != null && !string.isEmpty(); string = input.readLine()) {
-                        if (string.contains("msg=Hello")) {
-                            output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                            output.write("Hello".getBytes());
-                        }
-                        if (!string.contains("msg=Hello") && !string.contains("msg=Exit")) {
-                            output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                            output.write(string.getBytes());
-                        }
-                        if (string.contains("msg=Exit")) {
-                            status = !server.isClosed();
-                            break;
-                        }
+                    String string = input.readLine();
+                    if (string.contains("msg=Hello")) {
+                        output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                        output.write("Hello".getBytes());
+                    }
+                    if (!string.contains("msg=Hello") && !string.contains("msg=Exit")) {
+                        output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                        output.write(string.getBytes());
+                    }
+                    if (string.contains("msg=Exit")) {
+                        status = !server.isClosed();
                     }
                     output.flush();
                 }
@@ -32,4 +30,5 @@ public class EchoServers {
         }
     }
 }
+
 
