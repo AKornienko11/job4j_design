@@ -1,14 +1,25 @@
 package ru.job4j.serialization.xml;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import ru.job4j.serialization.json.Identifier;
 
 import java.util.Arrays;
 
+@XmlRootElement(name = "car")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Car {
-    private final boolean allWellDrive;
-    private final int age;
-    private final Identifier identifier;
-    private final String[] statuses;
+    @XmlAttribute
+    private boolean allWellDrive;
+    @XmlAttribute
+    private int age;
+    private Identifier identifier;
+    private String[] statuses;
+
+    public Car() {
+    }
 
     public Car(boolean allWellDrive, int age, Identifier identifier, String[] statuses) {
         this.allWellDrive = allWellDrive;
@@ -27,11 +38,4 @@ public class Car {
                 + ", statuses=" + Arrays.toString(statuses)
                 + '}';
     }
-
-    public static void main(String[] args) {
-        final Car car = new Car(false, 2, new Identifier("A777AA77"),
-                new String[] {"NEW", "Sedan"});
-        System.out.println(car);
-    }
-
 }
