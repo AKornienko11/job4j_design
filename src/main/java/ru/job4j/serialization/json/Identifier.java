@@ -1,7 +1,20 @@
 package ru.job4j.serialization.json;
 
 public class Identifier {
-    private final String number;
+    private  String number;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public Identifier() {
+
+    }
+
 
     public Identifier(String number) {
         this.number = number;

@@ -3,10 +3,10 @@ package ru.job4j.serialization.json;
 import java.util.Arrays;
 
 public class Car {
-     private final boolean allWellDrive;
-     private final int age;
-     private final Identifier identifier;
-     private final String[] statuses;
+     private  boolean allWellDrive;
+     private  int age;
+     private  Identifier identifier;
+     private  String[] statuses;
 
     public Car(boolean allWellDrive, int age, Identifier identifier, String[] statuses) {
         this.allWellDrive = allWellDrive;
@@ -26,7 +26,37 @@ public class Car {
                 + '}';
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Car(true, 2, new Identifier("sdcsvdsvs"), new String[] {"dccdcd", "sdhjsj"}));
+
+
+    public boolean isAllWellDrive() {
+        return allWellDrive;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Identifier getIdentifier() {
+        return identifier;
+    }
+
+    public String[] getStatuses() {
+        return statuses;
+    }
+
+    public void setAllWellDrive(boolean allWellDrive) {
+        this.allWellDrive = allWellDrive;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setIdentifier(Identifier identifier) {
+        this.identifier = identifier;
+    }
+
+    public void setStatuses(String[] statuses) {
+        this.statuses = statuses;
     }
 }
