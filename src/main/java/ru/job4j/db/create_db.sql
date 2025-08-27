@@ -6,20 +6,9 @@ CREATE DATABASE system
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
-create table comments(
-	id int primary key,
-	 content boolean
-);
-
-create table attachs(
-	id int primary key,
-	 type_file varchar(255)
-);
-
 create table categories(
 	id int primary key,
-	 name varchar(255)
-
+	name varchar(255)
 );
 
 create table states(
@@ -27,43 +16,47 @@ create table states(
 	 name varchar(255)
 );
 
-create table item (
+create table items (
 	id int primary key,
 	name varchar(255),
-	comments_id int references comments(id),
-	attachs_id int references attachs(id),
 	categories_id int references categories(id),
 	states_id int references states(id)
 );
 
-create table role(
+create table comments(
+	 id int primary key,
+	 content boolean,
+     item_id int references items(id)
+);
+
+create table attachs(
+	 id int primary key,
+	 type_file varchar(255),
+     item_id int references items(id)
+
+);
+
+create table roles(
 	id int primary key,
 	name varchar(255)
 );
-create table rule(
+create table rules(
 	id int primary key,
 	name varchar(255)
 );
 
 create table roles_rules(
 	id int primary key,
-	role_id int references role(id),
-	rule_id int references rule(id)
+	role_id int references roles(id),
+	rule_id int references rules(id)
 );
 
 create table users (
 	id int primary key,
 	name varchar(255),
-	role_rule_id int references role(id),
-	item_id int references item(id)
+	role_rule_id int references roles(id),
+	item_id int references items(id)
 );
-
-insert into comments(id, content) values (1, true);
-insert into comments(id, content) values(2, false);
-
-insert into attachs(id, type_file) values(1, '.pdf');
-insert into attachs(id, type_file) values(2, '.jpg');
-insert into attachs(id, type_file) values(3, '.txt');
 
 insert into categories(id, name) values(1, 'urgent');
 insert into categories(id, name) values(2, 'non_urgent');
@@ -71,14 +64,22 @@ insert into categories(id, name) values(2, 'non_urgent');
 insert into states(id, name) values(1, 'done');
 insert into states(id, name) values(2, 'in_procces');
 
-insert into item(id, name, comments_id, attachs_id, categories_id, states_id) values(1, 'create db',1, 1, 1, 1);
-insert into item(id, name, comments_id, attachs_id, categories_id, states_id) values(2, 'create db',2, 2, 2, 2);
+insert into items(id, name, categories_id, states_id) values(1, 'create db', 1, 1);
+insert into items(id, name, categories_id, states_id) values(2, 'create db', 2, 2);
 
-insert into role(id, name) values(1, 'Junior');
-insert into role(id, name) values(2, 'Midle');
+insert into comments(id, content, item_id) values (1, true, 1);
+insert into comments(id, content, item_id) values(2, false, 2);
 
-insert into rule(id, name) values(1, 'vieving');
-insert into rule(id, name) values(2, 'editing');
+insert into attachs(id, type_file, item_id) values(1, '.pdf', 1);
+insert into attachs(id, type_file, item_id) values(2, '.jpg', 1);
+insert into attachs(id, type_file, item_id) values(3, '.txt', 2);
+
+
+insert into roles(id, name) values(1, 'Junior');
+insert into roles(id, name) values(2, 'Midle');
+
+insert into rules(id, name) values(1, 'vieving');
+insert into rules(id, name) values(2, 'editing');
 
 insert into roles_rules(id, role_id, rule_id) values(1, 1, 1);
 insert into roles_rules(id, role_id, rule_id) values(2, 2, 2);
