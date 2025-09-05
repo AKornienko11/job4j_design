@@ -48,5 +48,3 @@ select n1.name, n1.gender , n2.name, n2.gender, (n1.name, n2.name ) as "Пара
          cross join teens n2
 		 where n1.gender != n2.gender and n1.gender = 'female';
 
-
-
