@@ -46,5 +46,5 @@ insert into teens(id, name, gender) values (1, 'Nina', 'female'), (2, 'Valya', '
 
 select n1.name, n1.gender , n2.name, n2.gender, (n1.name, n2.name ) as "Пара" from teens n1
          cross join teens n2
-		 where n1.gender != n2.gender and n1.gender = 'female';
+		 where n1.gender < n2.gender;
 
