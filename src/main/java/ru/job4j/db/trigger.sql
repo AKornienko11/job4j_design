@@ -61,6 +61,7 @@ insert into products (name, producer, count, price)
 VALUES ('product_11', 'producer_14', 89, 1400);
 
 insert into products (name, producer, count, price)
+
 VALUES ('product_12', 'producer_15', 879, 14900);
 
 
