@@ -58,7 +58,7 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                    h = h.next;
+                h = h.next;
 
                 return h.item;
             }
@@ -74,4 +74,5 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
             this.next = next;
         }
     }
+
 }

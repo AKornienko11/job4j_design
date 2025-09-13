@@ -22,7 +22,9 @@ class ArrayItTest {
         );
         assertThat(iterator.next()).isEqualTo(1);
         assertThat(iterator.next()).isEqualTo(2);
+        assertThat(iterator.hasNext()).isTrue();
         assertThat(iterator.next()).isEqualTo(3);
+        assertThat(iterator.hasNext()).isFalse();
     }
 
 }

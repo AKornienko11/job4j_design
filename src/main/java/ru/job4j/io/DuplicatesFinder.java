@@ -8,7 +8,7 @@ import java.util.List;
 public class DuplicatesFinder {
     public static void main(String[] args) throws IOException {
         Path start = Path.of(".");
-        duplicate(start).forEach(System.out::println);
+        duplicate(start);
     }
 
     public static List<Path> duplicate(Path path) throws IOException {

@@ -85,4 +85,4 @@ insert into comments(id, content, item_id) values(2, false, 2);
 
 insert into attachs(id, type_file, item_id) values(1, '.pdf', 1);
 insert into attachs(id, type_file, item_id) values(2, '.jpg', 1);
-insert into attachs(id, type_file, item_id) values(3, '.txt', 2);
+insert into attachs(id, type_file, item_id) values(3, '.txt', 2);lo

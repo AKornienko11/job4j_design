@@ -4,6 +4,7 @@ import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.doesNotHave;
 import static org.assertj.core.api.BDDAssertions.withPrecision;
 
 class BoxTest {
@@ -87,6 +88,7 @@ class BoxTest {
                 .isGreaterThan(62.35)
                 .isCloseTo(62.3d, withPrecision(0.1d));
     }
+
 }
 
 

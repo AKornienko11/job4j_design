@@ -41,6 +41,7 @@ public class CSVReader {
 
     public static void main(String[] args) throws Exception {
         ArgsName argsName = ArgsName.of(args);
+        System.out.println(argsName.get("path"));
 
         handle(argsName);
     }

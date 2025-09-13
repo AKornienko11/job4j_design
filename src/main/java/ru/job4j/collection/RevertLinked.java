@@ -1,6 +1,7 @@
 package ru.job4j.collection;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 public class RevertLinked<T> implements Iterable<T> {
@@ -65,5 +66,29 @@ public class RevertLinked<T> implements Iterable<T> {
             this.value = value;
             this.next = next;
         }
+    }
+
+    public static void main(String[] args) {
+        RevertLinked<Integer> revertLinked = new RevertLinked<>();
+
+        revertLinked.add(2);
+        revertLinked.add(3);
+        revertLinked.add(4);
+        revertLinked.add(5);
+        revertLinked.add(6);
+
+        for (Integer el : revertLinked) {
+            System.out.println(el);
+        }
+
+        System.out.println("_-------------------------------");
+
+        revertLinked.revert();
+
+        for (Integer el : revertLinked) {
+            System.out.println(el);
+        }
+
+
     }
 }

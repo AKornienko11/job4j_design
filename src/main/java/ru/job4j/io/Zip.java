@@ -12,6 +12,7 @@ import java.util.zip.ZipOutputStream;
 
 
 public class Zip {
+
     private final Map<String, String> zip;
 
     public Zip() {
@@ -26,6 +27,7 @@ public class Zip {
                     zip.write(bufferedInputStream.readAllBytes());
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,12 +45,13 @@ public class Zip {
         }
     }
 
-    public String get(String key) {
-        if (!zip.containsKey(key)) {
-            throw new IllegalArgumentException("This key: \'%s\' is missing".formatted(key));
+
+        public String get(String key) {
+            if (!zip.containsKey(key)) {
+                throw new IllegalArgumentException("This key: \'%s\' is missing".formatted(key));
+            }
+            return zip.get(key);
         }
-        return zip.get(key);
-    }
 
     private void parse(String[] args) {
         for (String s : args) {
@@ -89,14 +92,16 @@ public class Zip {
 
     public static void main(String[] args) throws IOException {
         Zip zip = Zip.of(args);
-        zip.packSingleFile(
-                new File("./pom.xml"),
-                new File("./pom.zip")
-        );
-        zip.packFile(
-                Search.search(Path.of(zip.get("d")), path -> !path.toFile().getName().endsWith(zip.get("e"))),
-                new File(zip.get("o"))
-        );
+//        zip.packSingleFile(
+//                new File("./pom.xml"),
+//                new File("./pom.zip")
+//        );
+//        zip.packFile(
+//                Search.search(Path.of(zip.get("d")), path -> !path.toFile().getName().endsWith(zip.get("e"))),
+//                new File(zip.get("o"))
+//        );
+        System.out.println(zip.get("o"));
+
     }
 }
 

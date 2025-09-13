@@ -40,5 +40,6 @@ public class FlatMap<T> implements Iterator<T> {
         while (flat.hasNext()) {
             System.out.println(flat.next());
         }
+
     }
 }
